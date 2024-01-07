@@ -4,7 +4,7 @@
   "name": "sExpl_r",
   "bbox_bottom": 47,
   "bbox_left": 0,
-  "bbox_right": 47,
+  "bbox_right": 63,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 3,
   "parent": {
-    "name": "Barrels",
-    "path": "folders/Sprites/Barrels.yy",
+    "name": "Explosions",
+    "path": "folders/Sprites/Explosions.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 48,
+  "width": 64,
 }

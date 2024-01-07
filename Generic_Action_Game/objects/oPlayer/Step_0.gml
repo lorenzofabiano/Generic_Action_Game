@@ -30,6 +30,8 @@ if (move == 0)  {
 
 moveX = clamp(moveX + accel * move, -spd, spd);
 moveY += grav;
+moveY = clamp(moveY, -maxJumpForce, maxFallSpeed);
+
 
 repeat(precisionStep) {
     var xStep = moveX / precisionStep;
@@ -93,21 +95,22 @@ hitCooldown = clamp(hitCooldown--,0,maxHitCooldown);
 #endregion attack
 
 #region explode
-if (instance_exists(oExplosionHitbox)) {
+if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr) && instance_exists(oExplosionHitbox_r) && instance_exists(oExplosionHitbox_l) && instance_exists(oExplosionHitbox_ur) && instance_exists(oExplosionHitbox_ul)) {
 	if (point_in_rectangle(x,y,oExplosionHitbox_dl.bbox_left,oExplosionHitbox_dl.bbox_top,oExplosionHitbox_dl.bbox_right,oExplosionHitbox_dl.bbox_bottom)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
 		moveX = -explodeH;
-		moveY = explodeV; 
+		moveY = jumpforce;
+		explodedBy = oExplosionHitbox6;
 	}
-
 	if (point_in_rectangle(x,y,oExplosionHitbox_dr.bbox_left,oExplosionHitbox_dr.bbox_top,oExplosionHitbox_dr.bbox_right,oExplosionHitbox_dr.bbox_bottom)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
 		moveX = explodeH;
-		moveY = explodeV; 
+		moveY = jumpforce;
+		explodedBy = oExplosionHitbox6;
 	}
 
 	if (point_in_rectangle(x,y,oExplosionHitbox_l.bbox_left,oExplosionHitbox_l.bbox_top,oExplosionHitbox_l.bbox_right,oExplosionHitbox_l.bbox_bottom)) {
@@ -115,33 +118,61 @@ if (instance_exists(oExplosionHitbox)) {
 		move = 0;
 		spd = 999;
 		moveX = -explodeH;
-		//moveY += explodeV; 
+		explodedBy = oExplosionHitbox6;
 	}
 	if (point_in_rectangle(x,y,oExplosionHitbox_r.bbox_left,oExplosionHitbox_r.bbox_top,oExplosionHitbox_r.bbox_right,oExplosionHitbox_r.bbox_bottom)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
 		moveX = explodeH;
-		//moveY += explodeV; 
+		explodedBy = oExplosionHitbox6;
 	}
 	if (point_in_rectangle(x,y,oExplosionHitbox_ul.bbox_left,oExplosionHitbox_ul.bbox_top,oExplosionHitbox_ul.bbox_right,oExplosionHitbox_ul.bbox_bottom)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
 		moveX = -explodeH;
-		moveY -= explodeV; 
+		moveY = -jumpforce;
+		explodedBy = oExplosionHitbox6;
 	}
 	if (point_in_rectangle(x,y,oExplosionHitbox_ur.bbox_left,oExplosionHitbox_ur.bbox_top,oExplosionHitbox_ur.bbox_right,oExplosionHitbox_ur.bbox_bottom)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
 		moveX = explodeH;
-		moveY -= explodeV; 
+		moveY = -jumpforce;
+		explodedBy = oExplosionHitbox6;
 	}
 }
+if (instance_exists(oExplosionHitbox_u)) {
+	//if (point_in_rectangle(x,y,oExplosionHitbox_u.bbox_left,oExplosionHitbox_u.bbox_top,oExplosionHitbox_u.bbox_right,oExplosionHitbox_u.bbox_bottom)) {
+	if (place_meeting(x,y,oExplosionHitbox_u)) {
+		hasControl = false;
+		move = 0;
+		moveX = 0;
+		//moveY = 0;
+		maxJumpForce = explodeV;
+		moveY = -explodeV;
+		explodedBy = oExplosionHitbox_u;
+	}		
+}
 
-if (moveX == 0) and (hasControl == false) {
+if (moveY == 0) and (hasControl == false) && (explodedBy == oExplosionHitbox_u) {
+	spd = regularSpd;
+	maxJumpForce = jumpforce;
+	hasControl = true;
+	explodedBy = noone;
+}
+
+if (moveX == 0) and (hasControl == false) && (explodedBy == oExplosionHitbox6) {
+	maxJumpForce = jumpforce;
 	spd = regularSpd;
 	hasControl = true;
+	explodedBy = noone;
 }
-#endregion explode
+#endregion 
+
+#region trail
+if (explodedBy != noone) instance_create_layer(x,y,"Trail",oTrail);
+#endregion
+

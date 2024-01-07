@@ -10,8 +10,8 @@
     "path": "folders/Objects/Explosions.yy",
   },
   "parentObjectId": {
-    "name": "oExplosionHitbox",
-    "path": "objects/oExplosionHitbox/oExplosionHitbox.yy",
+    "name": "oExplosionHitbox6",
+    "path": "objects/oExplosionHitbox6/oExplosionHitbox6.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

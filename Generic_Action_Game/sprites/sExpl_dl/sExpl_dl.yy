@@ -2,9 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "sExpl_dl",
-  "bbox_bottom": 47,
+  "bbox_bottom": 63,
   "bbox_left": 0,
-  "bbox_right": 47,
+  "bbox_right": 63,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -17,7 +17,7 @@
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 48,
+  "height": 64,
   "HTile": false,
   "layers": [
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"1e7f1bba-63bc-4116-b8dd-fd9703c47978","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 2,
   "parent": {
-    "name": "Barrels",
-    "path": "folders/Sprites/Barrels.yy",
+    "name": "Explosions",
+    "path": "folders/Sprites/Explosions.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
@@ -59,7 +59,7 @@
     ],
     "visibleRange": null,
     "volume": 1.0,
-    "xorigin": 48,
+    "xorigin": 64,
     "yorigin": 0,
   },
   "swatchColours": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 48,
+  "width": 64,
 }
