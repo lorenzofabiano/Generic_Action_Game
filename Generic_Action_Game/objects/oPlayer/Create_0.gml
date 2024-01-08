@@ -4,11 +4,11 @@
 // You can write your code in this editor
 accel = 0.5;
 decel = 0.3;
-regularSpd = 5;
+regularSpd = 3;
 jumpforce = 10;
 maxFallSpeed = 8;
 maxJumpForce = jumpforce;
-spd = 5;
+spd = regularSpd;
 grav = 0.5;
 moveX = 0;
 moveY = 0;

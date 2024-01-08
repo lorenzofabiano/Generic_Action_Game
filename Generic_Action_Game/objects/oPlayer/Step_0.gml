@@ -95,8 +95,9 @@ hitCooldown = clamp(hitCooldown--,0,maxHitCooldown);
 #endregion attack
 
 #region explode
-if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr) && instance_exists(oExplosionHitbox_r) && instance_exists(oExplosionHitbox_l) && instance_exists(oExplosionHitbox_ur) && instance_exists(oExplosionHitbox_ul)) {
-	if (point_in_rectangle(x,y,oExplosionHitbox_dl.bbox_left,oExplosionHitbox_dl.bbox_top,oExplosionHitbox_dl.bbox_right,oExplosionHitbox_dl.bbox_bottom)) {
+if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr) && /*instance_exists(oExplosionHitbox_r) && instance_exists(oExplosionHitbox_l) && */instance_exists(oExplosionHitbox_ur) && instance_exists(oExplosionHitbox_ul)) {
+	//if (point_in_rectangle(x,y,oExplosionHitbox_dl.bbox_left,oExplosionHitbox_dl.bbox_top,oExplosionHitbox_dl.bbox_right,oExplosionHitbox_dl.bbox_bottom)) {
+	if (place_meeting(x,y,oExplosionHitbox_dl)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
@@ -104,7 +105,8 @@ if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr)
 		moveY = jumpforce;
 		explodedBy = oExplosionHitbox6;
 	}
-	if (point_in_rectangle(x,y,oExplosionHitbox_dr.bbox_left,oExplosionHitbox_dr.bbox_top,oExplosionHitbox_dr.bbox_right,oExplosionHitbox_dr.bbox_bottom)) {
+	//if (point_in_rectangle(x,y,oExplosionHitbox_dr.bbox_left,oExplosionHitbox_dr.bbox_top,oExplosionHitbox_dr.bbox_right,oExplosionHitbox_dr.bbox_bottom)) {
+	if (place_meeting(x,y,oExplosionHitbox_dr)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
@@ -113,7 +115,7 @@ if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr)
 		explodedBy = oExplosionHitbox6;
 	}
 
-	if (point_in_rectangle(x,y,oExplosionHitbox_l.bbox_left,oExplosionHitbox_l.bbox_top,oExplosionHitbox_l.bbox_right,oExplosionHitbox_l.bbox_bottom)) {
+/*	if (point_in_rectangle(x,y,oExplosionHitbox_l.bbox_left,oExplosionHitbox_l.bbox_top,oExplosionHitbox_l.bbox_right,oExplosionHitbox_l.bbox_bottom)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
@@ -127,7 +129,9 @@ if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr)
 		moveX = explodeH;
 		explodedBy = oExplosionHitbox6;
 	}
-	if (point_in_rectangle(x,y,oExplosionHitbox_ul.bbox_left,oExplosionHitbox_ul.bbox_top,oExplosionHitbox_ul.bbox_right,oExplosionHitbox_ul.bbox_bottom)) {
+*/
+	//if (point_in_rectangle(x,y,oExplosionHitbox_ul.bbox_left,oExplosionHitbox_ul.bbox_top,oExplosionHitbox_ul.bbox_right,oExplosionHitbox_ul.bbox_bottom)) {
+	if (place_meeting(x,y,oExplosionHitbox_ul)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
@@ -135,7 +139,8 @@ if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr)
 		moveY = -jumpforce;
 		explodedBy = oExplosionHitbox6;
 	}
-	if (point_in_rectangle(x,y,oExplosionHitbox_ur.bbox_left,oExplosionHitbox_ur.bbox_top,oExplosionHitbox_ur.bbox_right,oExplosionHitbox_ur.bbox_bottom)) {
+	//if (point_in_rectangle(x,y,oExplosionHitbox_ur.bbox_left,oExplosionHitbox_ur.bbox_top,oExplosionHitbox_ur.bbox_right,oExplosionHitbox_ur.bbox_bottom)) {
+	if (place_meeting(x,y,oExplosionHitbox_ur)) {
 		hasControl = false;
 		move = 0;
 		spd = 999;
