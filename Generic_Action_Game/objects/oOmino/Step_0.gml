@@ -1,9 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-
-if (hasMovement) move = -1;
-//if (place_meeting(x,y,oWall)) move = move * -1;
+if (hasMovement) move = 1;
+if (place_meeting(x,y,oWall)) move = move * -1;
 
 moveX = spd * move;
 moveY += grav;
@@ -14,9 +12,8 @@ repeat(precisionStep) {
     var yStep = moveY / precisionStep;
 
     if (place_meeting(x + xStep, y, oWall)) {
-		move = move * -1;
-        //moveX = 0;
-		moveX = moveX * -1;
+        moveX = 0;
+		//move = move * -1;
     } else {
         x += xStep;
     }
