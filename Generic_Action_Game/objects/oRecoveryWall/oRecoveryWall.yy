@@ -1,11 +1,8 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oBarrel_spawner",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-  ],
+  "name": "oRecoveryWall",
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -13,8 +10,8 @@
     "path": "folders/Objects.yy",
   },
   "parentObjectId": {
-    "name": "oBarrelParent",
-    "path": "objects/oBarrelParent/oBarrelParent.yy",
+    "name": "oWall",
+    "path": "objects/oWall/oWall.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -32,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sBarrel_spawner",
-    "path": "sprites/sBarrel_spawner/sBarrel_spawner.yy",
+    "name": "sRecoveryWall",
+    "path": "sprites/sRecoveryWall/sRecoveryWall.yy",
   },
   "spriteMaskId": null,
   "visible": true,

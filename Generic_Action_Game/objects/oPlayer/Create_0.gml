@@ -30,5 +30,6 @@ hitCooldown = 0;
 #region explode
 explodeH = 10;
 explodeV = 15;
+explodeDownAngle = 1;
 explodedBy = noone;
 #endregion
