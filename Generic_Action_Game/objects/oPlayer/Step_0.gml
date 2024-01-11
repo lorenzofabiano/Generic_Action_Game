@@ -9,7 +9,10 @@ if (hasControl) {
 
 	var move_right = keyboard_check(vk_right) or keyboard_check(ord("D"));
 	var move_left = keyboard_check(vk_left) or keyboard_check(ord("A"));
-	var jump = keyboard_check_pressed(vk_up) or keyboard_check_pressed(vk_space);
+	var jump = keyboard_check_pressed(vk_space);
+	var lookUp = keyboard_check(ord("W"));
+	var lookDown = keyboard_check(ord("S"));
+	var look = lookUp - lookDown;
 	move = move_right - move_left;
 
 
@@ -79,18 +82,21 @@ circle_y = y + lengthdir_y(radius, angle);
 
 #region attack
 if (mouse_check_button_pressed(mb_left) and hitCooldown == 0) {
-	instance_create_layer(circle_x,circle_y,"other",oAim);
+	//instance_create_layer(circle_x,circle_y,"other",oAim);
+	instance_create_layer(x,y,"other",oAimBig);
 	activeFrames = maxActiveFrames;
 	hitCooldown = maxHitCooldown;
 }
 activeFrames--
-activeFrames = clamp(activeFrames--,0,maxActiveFrames);
+activeFrames = clamp(activeFrames,0,maxActiveFrames);
 
-if (activeFrames == 0) and (instance_exists(oAim)) {
-	instance_destroy(oAim);
+//if (activeFrames == 0) and (instance_exists(oAim)) {
+//	instance_destroy(oAim);
+if (activeFrames == 0) and (instance_exists(oAimBig)) {
+	instance_destroy(oAimBig);
 }
 hitCooldown--
-hitCooldown = clamp(hitCooldown--,0,maxHitCooldown);
+hitCooldown = clamp(hitCooldown,0,maxHitCooldown);
 
 #endregion attack
 
@@ -98,86 +104,120 @@ hitCooldown = clamp(hitCooldown--,0,maxHitCooldown);
 if (instance_exists(oExplosionHitbox_dl) && instance_exists(oExplosionHitbox_dr) && /*instance_exists(oExplosionHitbox_r) && instance_exists(oExplosionHitbox_l) && */instance_exists(oExplosionHitbox_ur) && instance_exists(oExplosionHitbox_ul)) {
 	if (point_in_rectangle(x,y,oExplosionHitbox_dl.bbox_left,oExplosionHitbox_dl.bbox_top,oExplosionHitbox_dl.bbox_right,oExplosionHitbox_dl.bbox_bottom)) {
 	//if (place_meeting(x,y,oExplosionHitbox_dl)) {
-		hasControl = false;
+		//hasControl = false;
 		move = 0;
-		spd = 999;
+		spd = 5;
+		decel = .1;
 		moveX = -explodeH;
 		moveY = explodeDownAngle;
 		explodedBy = oExplosionHitbox6;
+		explodeTime = explodeMaxTime;
+		
 	}
 	if (point_in_rectangle(x,y,oExplosionHitbox_dr.bbox_left,oExplosionHitbox_dr.bbox_top,oExplosionHitbox_dr.bbox_right,oExplosionHitbox_dr.bbox_bottom)) {
 	//if (place_meeting(x,y,oExplosionHitbox_dr)) {
-		hasControl = false;
+		//hasControl = false;
 		move = 0;
-		spd = 999;
+		spd = 5;
+		decel = .1;
 		moveX = explodeH;
 		moveY = explodeDownAngle;
 		explodedBy = oExplosionHitbox6;
+		explodeTime = explodeMaxTime;
 	}
 
-/*	if (point_in_rectangle(x,y,oExplosionHitbox_l.bbox_left,oExplosionHitbox_l.bbox_top,oExplosionHitbox_l.bbox_right,oExplosionHitbox_l.bbox_bottom)) {
-		hasControl = false;
+	if (point_in_rectangle(x,y,oExplosionHitbox_ul.bbox_left,oExplosionHitbox_ul.bbox_top,oExplosionHitbox_ul.bbox_right,oExplosionHitbox_ul.bbox_bottom)) {
+	//if (place_meeting(x,y,oExplosionHitbox_ul)) {
+		//hasControl = false;
 		move = 0;
-		spd = 999;
-		moveX = -explodeH;
-		explodedBy = oExplosionHitbox6;
-	}
-	if (point_in_rectangle(x,y,oExplosionHitbox_r.bbox_left,oExplosionHitbox_r.bbox_top,oExplosionHitbox_r.bbox_right,oExplosionHitbox_r.bbox_bottom)) {
-		hasControl = false;
-		move = 0;
-		spd = 999;
-		moveX = explodeH;
-		explodedBy = oExplosionHitbox6;
-	}
-*/
-	//if (point_in_rectangle(x,y,oExplosionHitbox_ul.bbox_left,oExplosionHitbox_ul.bbox_top,oExplosionHitbox_ul.bbox_right,oExplosionHitbox_ul.bbox_bottom)) {
-	if (place_meeting(x,y,oExplosionHitbox_ul)) {
-		hasControl = false;
-		move = 0;
-		spd = 999;
+		spd = 5;
+		decel = .1;
 		moveX = -explodeH;
 		moveY = -jumpforce;
 		explodedBy = oExplosionHitbox6;
+		explodeTime = explodeMaxTime;
 	}
-	//if (point_in_rectangle(x,y,oExplosionHitbox_ur.bbox_left,oExplosionHitbox_ur.bbox_top,oExplosionHitbox_ur.bbox_right,oExplosionHitbox_ur.bbox_bottom)) {
-	if (place_meeting(x,y,oExplosionHitbox_ur)) {
-		hasControl = false;
+	if (point_in_rectangle(x,y,oExplosionHitbox_ur.bbox_left,oExplosionHitbox_ur.bbox_top,oExplosionHitbox_ur.bbox_right,oExplosionHitbox_ur.bbox_bottom)) {
+	//if (place_meeting(x,y,oExplosionHitbox_ur)) {
+		//hasControl = false;
 		move = 0;
-		spd = 999;
+		spd = 5;
+		decel = .1;
 		moveX = explodeH;
 		moveY = -jumpforce;
 		explodedBy = oExplosionHitbox6;
+		explodeTime = explodeMaxTime;
 	}
 }
 if (instance_exists(oExplosionHitbox_u)) {
 	//if (point_in_rectangle(x,y,oExplosionHitbox_u.bbox_left,oExplosionHitbox_u.bbox_top,oExplosionHitbox_u.bbox_right,oExplosionHitbox_u.bbox_bottom)) {
 	if (place_meeting(x,y,oExplosionHitbox_u)) {
-		hasControl = false;
+		//hasControl = false;
 		move = 0;
 		moveX = 0;
 		//moveY = 0;
 		maxJumpForce = explodeV;
 		moveY = -explodeV;
 		explodedBy = oExplosionHitbox_u;
+		explodeTime = explodeMaxTime;
 	}		
 }
 
-if (moveY == 0) and (hasControl == false) && (explodedBy == oExplosionHitbox_u) {
+//if (moveY == 0) and (hasControl == false) and (explodedBy == oExplosionHitbox_u) {
+if  (explodeTime == 0) and (explodedBy == oExplosionHitbox_u) {
 	spd = regularSpd;
 	maxJumpForce = jumpforce;
 	hasControl = true;
 	explodedBy = noone;
+	decel = regularDecel;
 }
 
-if (moveX == 0) and (hasControl == false) && (explodedBy == oExplosionHitbox6) {
+//if (moveX == 0) and (hasControl == false) and (explodedBy == oExplosionHitbox6) {
+if  (explodeTime == 0) and (explodedBy == oExplosionHitbox6) {
 	maxJumpForce = jumpforce;
 	spd = regularSpd;
 	hasControl = true;
 	explodedBy = noone;
+	decel = regularDecel;
 }
+
+explodeTime--
+explodeTime = clamp(explodeTime, 0, explodeMaxTime);
+
 #endregion 
 
 #region trail
 if (explodedBy != noone) instance_create_layer(x,y,"Trail",oTrail);
 #endregion
 
+
+#region look
+
+#region lookup
+if (lookUp) && (!lookDown) {
+	if (!instance_exists(oLookUp)) instance_create_layer(x,y,"other",oLookUp);
+	oCamera.follow = oLookUp; 
+}
+else {  
+	if (instance_exists(oLookUp)) && (oCamera.follow == oLookUp) {
+		oCamera.follow = oPlayer;
+		instance_destroy(oLookUp);
+	}
+}
+#endregion
+
+#region lookdown
+if (lookDown) && (!lookUp) {
+	if (!instance_exists(oLookDown)) instance_create_layer(x,y,"other",oLookDown);
+	oCamera.follow = oLookDown; 
+}
+else {  
+	if (instance_exists(oLookDown)) && (oCamera.follow == oLookDown) {
+		oCamera.follow = oPlayer;
+		instance_destroy(oLookDown);
+	}
+}
+
+#endregion
+
+#endregion look
