@@ -32,5 +32,5 @@
     "path": "sprites/sExplodeaura/sExplodeaura.yy",
   },
   "spriteMaskId": null,
-  "visible": true,
+  "visible": false,
 }

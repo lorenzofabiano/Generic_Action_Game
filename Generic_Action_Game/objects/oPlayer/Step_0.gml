@@ -7,17 +7,46 @@
 //many thanks to https://www.reddit.com/r/gamemaker/comments/5my5jr/deductadd_onto_the_value_until_the_value_is_zero/
 if (hasControl) {
 
-	var move_right = keyboard_check(vk_right) or keyboard_check(ord("D"));
-	var move_left = keyboard_check(vk_left) or keyboard_check(ord("A"));
-	var jump = keyboard_check_pressed(vk_space);
-	var lookUp = keyboard_check(ord("W"));
-	var lookDown = keyboard_check(ord("S"));
-	var spawnBarrel = keyboard_check_pressed(ord("E"));
-	var spawnUpBarrel = keyboard_check_pressed(ord("Q"));
-	var recoverBarrel = keyboard_check_pressed(ord("R"));
+
+#region get axis values
+	if (gamepad_axis_value(0,gp_axislh) > deadZone) {
+		stick_move_right = true;
+		stick_move_left = false;
+	} else if (gamepad_axis_value(0,gp_axislh) < -deadZone) {
+		stick_move_left = true;
+		stick_move_right = false;
+	} else {
+		stick_move_right = false;
+		stick_move_left = false;
+	}
+	
+	if (gamepad_axis_value(0,gp_axislv) > deadZone) {
+		stick_move_down = true;
+		stick_move_up = false;
+	} else if (gamepad_axis_value(0,gp_axislv) < -deadZone) {
+		stick_move_up = true;
+		stick_move_down = false;
+
+	} else {
+		stick_move_up = false;
+		stick_move_down = false;
+	}
+#endregion
+
+	var move_right = keyboard_check(ord("D")) || gamepad_button_check(0,gp_padr) || stick_move_right;
+	var move_left = keyboard_check(ord("A")) || gamepad_button_check(0,gp_padl) || stick_move_left;
+	var jump = keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0,gp_face1);
+	var lookUp = keyboard_check(ord("W")) || gamepad_button_check(0,gp_padu) || stick_move_up;
+	var lookDown = keyboard_check(ord("S")) || gamepad_button_check(0,gp_padd) || stick_move_down;
+	var spawnBarrel = keyboard_check_pressed(ord("E")) || gamepad_button_check_pressed(0,gp_face4);
+	var spawnUpBarrel = keyboard_check_pressed(ord("Q")) || gamepad_button_check_pressed(0,gp_face2);
+	var recoverBarrel = keyboard_check_pressed(ord("R")) || gamepad_button_check_pressed(0,gp_shoulderrb);
+	var attack = mouse_check_button_pressed(mb_left) || gamepad_button_check_pressed(0,gp_face3);
+	
+	
 	
 	var look = lookUp - lookDown;
-	move = move_right - move_left;
+	var move = move_right - move_left;
 
 
 	if (jump && onGround) {
@@ -48,6 +77,23 @@ if (move == 0)  {
 moveX = clamp(moveX + accel * move, -spd, spd);
 moveY += grav;
 moveY = clamp(moveY, -maxJumpForce, maxFallSpeed);
+
+
+#region animation
+if (moveX != 0) && (onGround) && (explodedBy == noone) {
+	sprite_index = sPlayer_run;
+	image_xscale = sign(moveX);
+} 
+
+if (explodedBy == oExplosionHitbox_u) sprite_index = sPlayer_vertical_jump;
+
+if (explodedBy == oExplosionHitbox6) && (moveX != 0) {
+	sprite_index = sPlayer_diagonal_jump;
+	image_xscale = sign(moveX);
+}
+
+if (onGround) && (moveX == 0) && (explodedBy == noone) sprite_index = sPlayer;
+#endregion
 
 
 repeat(precisionStep) {
@@ -91,7 +137,7 @@ circle_y = y + lengthdir_y(radius, angle);
 #endregion aim
 
 #region attack
-if (mouse_check_button_pressed(mb_left) and hitCooldown == 0) {
+if (attack) and (hitCooldown == 0) {
 	//instance_create_layer(circle_x,circle_y,"other",oAim);
 	instance_create_layer(x,y,"other",oAimBig);
 	activeFrames = maxActiveFrames;
@@ -100,8 +146,6 @@ if (mouse_check_button_pressed(mb_left) and hitCooldown == 0) {
 activeFrames--
 activeFrames = clamp(activeFrames,0,maxActiveFrames);
 
-//if (activeFrames == 0) and (instance_exists(oAim)) {
-//	instance_destroy(oAim);
 if (activeFrames == 0) and (instance_exists(oAimBig)) {
 	instance_destroy(oAimBig);
 }

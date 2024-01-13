@@ -20,6 +20,15 @@ lookUpDistance = 250;
 lookDownDistance = 250;
 //bAmmo = global.bAmmo;
 //bUpAmmo = global.bUpAmmo;
+
+#region axisvalues
+deadZone = 0.5;
+stick_move_right = false;
+stick_move_left = false;
+stick_move_up = false;
+stick_move_down = false;
+#endregion
+
 #region aim
 radius = 20; // Set your desired radius
 #endregion 
@@ -39,3 +48,4 @@ explodeV = 15;
 explodeDownAngle = 1;
 explodedBy = noone;
 #endregion
+
