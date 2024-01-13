@@ -12,6 +12,10 @@ if (hasControl) {
 	var jump = keyboard_check_pressed(vk_space);
 	var lookUp = keyboard_check(ord("W"));
 	var lookDown = keyboard_check(ord("S"));
+	var spawnBarrel = keyboard_check_pressed(ord("E"));
+	var spawnUpBarrel = keyboard_check_pressed(ord("Q"));
+	var recoverBarrel = keyboard_check_pressed(ord("R"));
+	
 	var look = lookUp - lookDown;
 	move = move_right - move_left;
 
@@ -20,7 +24,17 @@ if (hasControl) {
 	    moveY -= jumpforce;
 	    onGround = false;
 	}
-
+	
+	if (spawnBarrel) && (global.bAmmo > 0) {
+		with (instance_create_layer(x,y + 40,"Spawner",oBarrel_spawner)) spawnByPlayer = true;
+		global.bAmmo--;
+	}
+	
+	if (spawnUpBarrel) && (global.bUpAmmo > 0) {
+		with (instance_create_layer(x,y,"Spawner",oBarrel_up_spawner)) spawnByPlayer = true;
+		global.bUpAmmo--;
+	}
+	
 }
 
 if (move == 0)  {
@@ -64,15 +78,11 @@ repeat(precisionStep) {
         }
 
       }
-
-
-
-
 }
 
 #region aim
 
-var angle = point_direction(x, y, mouse_x, mouse_y);
+var angle = point_direction(x, y,x + radius, mouse_y);
 
 // Calculate the x and y coordinates of the point on the circle
 circle_x = x + lengthdir_x(radius, angle);
@@ -181,6 +191,13 @@ if  (explodeTime == 0) and (explodedBy == oExplosionHitbox6) {
 	decel = regularDecel;
 }
 
+if (explodedBy == oExplosionHitbox6) && (!instance_exists(oExplodeAura)) {
+	instance_create_layer(x,y,"other",oExplodeAura); 
+}
+else if (explodedBy == noone) && (instance_exists(oExplodeAura)) {
+	instance_destroy(oExplodeAura);
+}
+	
 explodeTime--
 explodeTime = clamp(explodeTime, 0, explodeMaxTime);
 
@@ -189,7 +206,6 @@ explodeTime = clamp(explodeTime, 0, explodeMaxTime);
 #region trail
 if (explodedBy != noone) instance_create_layer(x,y,"Trail",oTrail);
 #endregion
-
 
 #region look
 
@@ -221,3 +237,20 @@ else {
 #endregion
 
 #endregion look
+
+#region recover
+var onRecoveryWall = place_meeting(x,y+1,oRecoveryWall);
+
+if (onRecoveryWall) && (recoverBarrel) {
+	with (oBarrelParent) {
+		if (spawnByPlayer) instance_destroy();
+	}
+	global.bUpAmmo = global.StartBUpAmmo;
+	global.bAmmo = global.StartBAmmo;
+}
+
+#endregion
+
+#region ufo
+if (!instance_exists(oUfo)) instance_create_layer(x,y,"Trail",oUfo);
+#endregion

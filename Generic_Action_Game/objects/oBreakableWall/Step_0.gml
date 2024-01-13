@@ -1,8 +1,4 @@
 /// @description Insert description here
 // You can write your code in this editor
-instance_destroy(oBarrelParent);
 
-
-
-
-
+if (place_meeting(x,y,oExplodeAura)) instance_destroy();

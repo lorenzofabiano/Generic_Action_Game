@@ -18,6 +18,8 @@ precisionStep = 60;
 hasControl= true;
 lookUpDistance = 250;
 lookDownDistance = 250;
+//bAmmo = global.bAmmo;
+//bUpAmmo = global.bUpAmmo;
 #region aim
 radius = 20; // Set your desired radius
 #endregion 

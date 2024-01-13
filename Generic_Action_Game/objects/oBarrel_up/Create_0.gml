@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
+spawnByPlayer = false;
 
-instance_create_layer(x,y,"Spawner",oBarrel_up_spawner);
+
+
 
 
