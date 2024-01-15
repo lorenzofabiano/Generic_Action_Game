@@ -7,5 +7,6 @@ fadeOut = 1;
 fadeOutSpeed = .1;
 fading = false;
 unfadable = false;
+returning = false;
 
 if (!place_meeting(x,y,oWall)) && (!place_meeting(x,y,oBarrelParent)) unfadable = true;

@@ -16,3 +16,11 @@ if (fading) {
 	}
 	image_alpha = fadeOut;
 }
+
+if (returning) {
+	with (instance_create_layer(x,y,"other",oBarrelRecover)) {
+		thisWas = "upBarrel";
+	}
+	with (instance_place(x,y,oBarrel_up)) instance_destroy();
+	instance_destroy();
+}

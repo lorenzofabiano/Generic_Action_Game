@@ -288,10 +288,8 @@ var onRecoveryWall = place_meeting(x,y+1,oRecoveryWall);
 
 if (onRecoveryWall) && (recoverBarrel) {
 	with (oBarrelParent) {
-		if (spawnByPlayer) instance_destroy();
+		if (spawnByPlayer) returning = true;
 	}
-	global.bUpAmmo = global.StartBUpAmmo;
-	global.bAmmo = global.StartBAmmo;
 }
 
 #endregion
