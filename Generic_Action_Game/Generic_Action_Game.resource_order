@@ -40,6 +40,7 @@
     {"name":"oExplosionHitbox_dr","order":2,"path":"objects/oExplosionHitbox_dr/oExplosionHitbox_dr.yy",},
     {"name":"oAimBig","order":20,"path":"objects/oAimBig/oAimBig.yy",},
     {"name":"sExplodeaura","order":15,"path":"sprites/sExplodeaura/sExplodeaura.yy",},
+    {"name":"scShowHud","order":1,"path":"scripts/scShowHud/scShowHud.yy",},
     {"name":"Room4","order":3,"path":"rooms/Room4/Room4.yy",},
     {"name":"oExplosionHitbox_dl","order":1,"path":"objects/oExplosionHitbox_dl/oExplosionHitbox_dl.yy",},
     {"name":"sExpl_r","order":4,"path":"sprites/sExpl_r/sExpl_r.yy",},

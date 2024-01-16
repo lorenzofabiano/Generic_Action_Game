@@ -30,7 +30,7 @@ if (returning) {
 	x += (xTo - x) / barrelFollowSpeed;
 	y += (yTo - y) / barrelFollowSpeed;
 	
-	shrinkSize = clamp(shrinkSize,0.1,shrinkMaxSize);
+	shrinkSize = clamp(shrinkSize,0.3,shrinkMaxSize);
 	shrinkSize -= shrinkSpeed;
 	
 	image_xscale = shrinkSize;

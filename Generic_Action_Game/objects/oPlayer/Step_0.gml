@@ -43,6 +43,7 @@ if (hasControl) {
 	var recoverBarrel = keyboard_check_pressed(ord("R")) || gamepad_button_check_pressed(0,gp_shoulderrb);
 	var attack = mouse_check_button_pressed(mb_left) || gamepad_button_check_pressed(0,gp_face3);
 	var zoomBack = keyboard_check(vk_shift) || gamepad_button_check(0,gp_shoulderlb);
+	var showHud = mouse_check_button(mb_right) || gamepad_button_check(0,gp_shoulderl);
 	
 	
 	
@@ -300,3 +301,11 @@ if (!instance_exists(oUfo)) instance_create_layer(x,y,"Trail",oUfo);
 
 #region zoom back
 if (zoomBack) oCamera.zoomingBack = true; else oCamera.zoomingBack = false;
+#endregion
+
+#region show hud
+/*if (showHud) {
+	oCamera.follow = oUfo;
+	
+	
+}

@@ -58,6 +58,7 @@
     {"id":{"name":"oExplosionHitbox_dr","path":"objects/oExplosionHitbox_dr/oExplosionHitbox_dr.yy",},},
     {"id":{"name":"oAimBig","path":"objects/oAimBig/oAimBig.yy",},},
     {"id":{"name":"sExplodeaura","path":"sprites/sExplodeaura/sExplodeaura.yy",},},
+    {"id":{"name":"scShowHud","path":"scripts/scShowHud/scShowHud.yy",},},
     {"id":{"name":"Room4","path":"rooms/Room4/Room4.yy",},},
     {"id":{"name":"oExplosionHitbox_dl","path":"objects/oExplosionHitbox_dl/oExplosionHitbox_dl.yy",},},
     {"id":{"name":"sExpl_r","path":"sprites/sExpl_r/sExpl_r.yy",},},
