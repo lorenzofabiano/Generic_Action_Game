@@ -9,7 +9,6 @@ aspect_ratio = 16/9;
 
 
 view_height= 360;
-//view_height=270;
 view_width=view_height*aspect_ratio;
 
 

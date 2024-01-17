@@ -41,6 +41,7 @@ if (returning) {
 
 
 if (place_meeting(x,y,oPlayer)) {
+	scShowHud();
 	if (thisWas == "barrel") global.bAmmo++;
 	else if (thisWas == "upBarrel") global.bUpAmmo++;
 	instance_destroy()

@@ -36,18 +36,18 @@ if (hasControl) {
 	var move_right = keyboard_check(ord("D")) || gamepad_button_check(0,gp_padr) || stick_move_right;
 	var move_left = keyboard_check(ord("A")) || gamepad_button_check(0,gp_padl) || stick_move_left;
 	var jump = keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0,gp_face1);
-	var lookUp = keyboard_check(ord("W")) || gamepad_button_check(0,gp_padu) || stick_move_up;
-	var lookDown = keyboard_check(ord("S")) || gamepad_button_check(0,gp_padd) || stick_move_down;
+//	var lookUp = keyboard_check(ord("W")) || gamepad_button_check(0,gp_padu) || stick_move_up;
+//	var lookDown = keyboard_check(ord("S")) || gamepad_button_check(0,gp_padd) || stick_move_down;
 	var spawnBarrel = keyboard_check_pressed(ord("E")) || gamepad_button_check_pressed(0,gp_face4);
 	var spawnUpBarrel = keyboard_check_pressed(ord("Q")) || gamepad_button_check_pressed(0,gp_face2);
-	var recoverBarrel = keyboard_check_pressed(ord("R")) || gamepad_button_check_pressed(0,gp_shoulderrb);
+	var recoverBarrel = keyboard_check_pressed(ord("R")) || gamepad_button_check_pressed(0,gp_shoulderl);
 	var attack = mouse_check_button_pressed(mb_left) || gamepad_button_check_pressed(0,gp_face3);
 	var zoomBack = keyboard_check(vk_shift) || gamepad_button_check(0,gp_shoulderlb);
-	var showHud = mouse_check_button(mb_right) || gamepad_button_check(0,gp_shoulderl);
+	var showHud = mouse_check_button(mb_right) || gamepad_button_check(0,gp_shoulderrb);
 	
 	
 	
-	var look = lookUp - lookDown;
+//	var look = lookUp - lookDown;
 	var move = move_right - move_left;
 
 
@@ -254,9 +254,9 @@ if (explodedBy != noone) instance_create_layer(x,y,"Trail",oTrail);
 #endregion
 
 #region look
-
+/*
 #region lookup
-if (lookUp) && (!lookDown) {
+if (lookUp) && (!lookDown) && (zoomBack) {
 	if (!instance_exists(oLookUp)) instance_create_layer(x,y,"other",oLookUp);
 	oCamera.follow = oLookUp; 
 }
@@ -281,7 +281,7 @@ else {
 }
 
 #endregion
-
+*/
 #endregion look
 
 #region recover
@@ -297,6 +297,11 @@ if (onRecoveryWall) && (recoverBarrel) {
 
 #region ufo
 if (!instance_exists(oUfo)) instance_create_layer(x,y,"Trail",oUfo);
+/*if (!instance_exists(oUfo)) with (instance_create_layer(x,y,"Trail",oUfo)) {
+	image_xscale = 0.1;
+	image_yscale = 0.1;
+	
+}*/
 #endregion
 
 #region zoom back
@@ -304,8 +309,10 @@ if (zoomBack) oCamera.zoomingBack = true; else oCamera.zoomingBack = false;
 #endregion
 
 #region show hud
-/*if (showHud) {
+if (showHud) {
 	oCamera.follow = oUfo;
-	
-	
+	scShowHud();
+} else {
+	if (oCamera.follow = oUfo) oCamera.follow = oPlayer;
 }
+#endregion

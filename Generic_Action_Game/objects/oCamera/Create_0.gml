@@ -17,7 +17,10 @@ yTo = ystart;
 zoomingBack = false;
 
 //camera zoom
-view_min_zoom = .5
+
+//view_min_zoom = 1;
+//view_max_zoom = 2;
+view_min_zoom = .5;
 view_max_zoom = 1;
 view_zoom = view_max_zoom;
 
