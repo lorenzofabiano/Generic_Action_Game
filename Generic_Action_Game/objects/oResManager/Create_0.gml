@@ -5,10 +5,10 @@
 #macro view_w camera_get_view_width(view_camera[0])
 #macro view_h camera_get_view_height(view_camera[0])
 aspect_ratio = 16/9;
+global.rendererMultiplier = 2;
 
-
-
-view_height= 360;
+//view_height=360;
+view_height=360 * global.rendererMultiplier;
 view_width=view_height*aspect_ratio;
 
 
@@ -24,8 +24,3 @@ alarm[0]=1;
 
 
 surface_resize(application_surface,view_width*window_scale,view_height*window_scale);
-
-
-
-
-

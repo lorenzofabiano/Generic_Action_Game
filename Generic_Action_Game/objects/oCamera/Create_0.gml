@@ -20,9 +20,6 @@ zoomingBack = false;
 
 //view_min_zoom = 1;
 //view_max_zoom = 2;
-view_min_zoom = .5;
-view_max_zoom = 1;
+view_min_zoom = .5 * global.rendererMultiplier;
+view_max_zoom = 1 * global.rendererMultiplier;
 view_zoom = view_max_zoom;
-
-
-
