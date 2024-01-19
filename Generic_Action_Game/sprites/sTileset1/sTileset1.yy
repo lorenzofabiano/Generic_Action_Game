@@ -4,7 +4,7 @@
   "name": "sTileset1",
   "bbox_bottom": 127,
   "bbox_left": 0,
-  "bbox_right": 207,
+  "bbox_right": 367,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"1662e5cd-ba30-40ff-a666-38031be24bb6",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"d65049eb-fc4c-4251-90aa-3d24a636a122",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 128,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"c14ba276-76d0-444e-bccb-db7996702e5d","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"3d3b238d-f773-4c05-af86-4fdf1a06029e","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"1662e5cd-ba30-40ff-a666-38031be24bb6","path":"sprites/sTileset1/sTileset1.yy",},},},"Disabled":false,"id":"1ffc3a60-f804-467c-8928-eeb965f851fb","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d65049eb-fc4c-4251-90aa-3d24a636a122","path":"sprites/sTileset1/sTileset1.yy",},},},"Disabled":false,"id":"bf7b79f7-1730-49b7-80f3-90b4d072a615","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -70,5 +70,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 208,
+  "width": 368,
 }
