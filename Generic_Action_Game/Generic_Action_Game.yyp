@@ -71,6 +71,7 @@
     {"id":{"name":"sAimBig","path":"sprites/sAimBig/sAimBig.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"sBarrelRecover","path":"sprites/sBarrelRecover/sBarrelRecover.yy",},},
+    {"id":{"name":"oBarrelCharged","path":"objects/oBarrelCharged/oBarrelCharged.yy",},},
     {"id":{"name":"oRecoveryWall","path":"objects/oRecoveryWall/oRecoveryWall.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"sBarrelCharged","path":"sprites/sBarrelCharged/sBarrelCharged.yy",},},

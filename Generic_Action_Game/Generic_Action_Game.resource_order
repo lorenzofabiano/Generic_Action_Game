@@ -52,6 +52,7 @@
     {"name":"sExpl_u","order":7,"path":"sprites/sExpl_u/sExpl_u.yy",},
     {"name":"sAimBig","order":11,"path":"sprites/sAimBig/sAimBig.yy",},
     {"name":"sBarrelRecover","order":24,"path":"sprites/sBarrelRecover/sBarrelRecover.yy",},
+    {"name":"oBarrelCharged","order":30,"path":"objects/oBarrelCharged/oBarrelCharged.yy",},
     {"name":"oRecoveryWall","order":17,"path":"objects/oRecoveryWall/oRecoveryWall.yy",},
     {"name":"sBarrelCharged","order":30,"path":"sprites/sBarrelCharged/sBarrelCharged.yy",},
     {"name":"oDebug","order":1,"path":"objects/oDebug/oDebug.yy",},

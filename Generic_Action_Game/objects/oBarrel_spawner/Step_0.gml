@@ -1,8 +1,8 @@
-if (!place_meeting(x,y,oBarrel)) spawnTime--;
-if (spawnTime <= 0) {
+//if (!place_meeting(x,y,oBarrel)) spawnTime--;
+if (!place_meeting(x,y,oBarrel)) {
 	with (instance_create_layer(x,y,"Barrels",oBarrel)) spawnByPlayer = other.spawnByPlayer;
 	// instance_create_layer(x,y,"Barrels",oBarrel);
-	spawnTime = maxSpawnTime;
+	//spawnTime = maxSpawnTime;
 }
 
 if ((place_meeting(x,y,oWall)) || (place_meeting(x,y,oBarrelParent))) && (!unfadable) fading = true;
