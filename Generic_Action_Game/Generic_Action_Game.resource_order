@@ -53,6 +53,7 @@
     {"name":"sAimBig","order":11,"path":"sprites/sAimBig/sAimBig.yy",},
     {"name":"sBarrelRecover","order":24,"path":"sprites/sBarrelRecover/sBarrelRecover.yy",},
     {"name":"oRecoveryWall","order":17,"path":"objects/oRecoveryWall/oRecoveryWall.yy",},
+    {"name":"sBarrelCharged","order":30,"path":"sprites/sBarrelCharged/sBarrelCharged.yy",},
     {"name":"oDebug","order":1,"path":"objects/oDebug/oDebug.yy",},
     {"name":"sAim","order":2,"path":"sprites/sAim/sAim.yy",},
     {"name":"oBarrel_up_spawner","order":11,"path":"objects/oBarrel_up_spawner/oBarrel_up_spawner.yy",},
