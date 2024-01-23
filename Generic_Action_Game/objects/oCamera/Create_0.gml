@@ -15,6 +15,7 @@ camera_follow_speed = 10;
 xTo = xstart;
 yTo = ystart;
 zoomingBack = false;
+confine = true;
 
 //camera zoom
 

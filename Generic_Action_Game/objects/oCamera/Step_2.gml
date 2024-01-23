@@ -27,8 +27,10 @@ x += (xTo - x) / camera_follow_speed;
 y += (yTo - y) / camera_follow_speed;
 
 //Don't let the camera see over the room confines
+if (confine) {
 x = clamp(x,view_w_half+buff,room_width-view_w_half-buff);
 y = clamp(y,view_h_half+buff,room_height-view_h_half-buff);
+}
 
 //Screen shake
 x += random_range(-shake_remain,shake_remain)
