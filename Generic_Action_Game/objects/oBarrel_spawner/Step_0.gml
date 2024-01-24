@@ -1,5 +1,5 @@
 //if (!place_meeting(x,y,oBarrel)) spawnTime--;
-if (!place_meeting(x,y,oBarrel)) {
+if (!place_meeting(x,y,oBarrel)) && (unfadable) {
 	with (instance_create_layer(x,y,"Barrels",oBarrel)) spawnByPlayer = other.spawnByPlayer;
 	// instance_create_layer(x,y,"Barrels",oBarrel);
 	//spawnTime = maxSpawnTime;

@@ -2,7 +2,7 @@
 // You can write your code in this editor
 //if (!place_meeting(x,y,oBarrel_up)) spawnTime--;
 //if (spawnTime <= 0) {
-if (!place_meeting(x,y,oBarrel_up)) {
+if (!place_meeting(x,y,oBarrel_up)) && (unfadable) {
 	with (instance_create_layer(x,y,"Barrels",oBarrel_up)) spawnByPlayer = other.spawnByPlayer;
 	//spawnTime = maxSpawnTime;
 }
@@ -25,3 +25,5 @@ if (returning) {
 	with (instance_place(x,y,oBarrel_up)) instance_destroy();
 	instance_destroy();
 }
+
+//show_debug_message(instance_place(x,y,oBarrel_up));

@@ -25,7 +25,7 @@ if (returning) {
 		yTo = follow.y //- distanceFromFollow;
 
 		}
-	instance_create_layer(x,y,"Trail",oTrailFull);
+
 
 	x += (xTo - x) / barrelFollowSpeed;
 	y += (yTo - y) / barrelFollowSpeed;
@@ -39,12 +39,13 @@ if (returning) {
 		
 }
 
+instance_create_layer(x,y,"Trail",oTrailFull);
 
 if (place_meeting(x,y,oPlayer)) {
 	scShowHud();
 	if (thisWas == "barrel") global.bAmmo++;
 	else if (thisWas == "upBarrel") global.bUpAmmo++;
-	instance_destroy()
+	instance_destroy();
 }
 
 

@@ -26,3 +26,10 @@ if (!charging) {
 		instance_destroy();
 	}
 }
+
+//toppa demmerda per un comportamento che non riesco a controllare de sto gioco demmerda.
+//quando spawno uno spawner, lo spawner spawna due hitbox rimbalzelle perché nei 2 step
+//in cui le hitbox rimbalzelle si stanno caricando, hanno una collision mask invisibile e quindi
+//secondo gli spawner non esistono, ergo gli spawner ne spawnano un altra.
+//se succede, le hitbox rimbalzelle si detectano e si uccidono a vicenda. L'ultima che rimane vince.
+with (instance_place(x,y,oBarrel)) instance_destroy(); 
