@@ -76,6 +76,7 @@
     {"id":{"name":"sBarrelRecover","path":"sprites/sBarrelRecover/sBarrelRecover.yy",},},
     {"id":{"name":"oBarrelCharged","path":"objects/oBarrelCharged/oBarrelCharged.yy",},},
     {"id":{"name":"oRecoveryWall","path":"objects/oRecoveryWall/oRecoveryWall.yy",},},
+    {"id":{"name":"oPause","path":"objects/oPause/oPause.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"sBarrelCharged","path":"sprites/sBarrelCharged/sBarrelCharged.yy",},},
     {"id":{"name":"oDebug","path":"objects/oDebug/oDebug.yy",},},
