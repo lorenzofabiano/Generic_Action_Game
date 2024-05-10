@@ -4,7 +4,18 @@
 follow = oPlayer;
 ufoFollowSpeed = 20;
 distanceFromFollow = 20;
+maxDistanceFromFollow = distanceFromFollow*10;
+minDistanceFromFollow = distanceFromFollow;
 xTo = xstart;
 yTo = ystart;
 
+
+
 alarm[0] = 30;
+
+
+zoomSpeed = .5;
+currentZoom = 1;
+maxZoom = 15;
+minZoom = 1;
+sideMovingSpeed = 10;

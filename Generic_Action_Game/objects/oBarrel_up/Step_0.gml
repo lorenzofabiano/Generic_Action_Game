@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (charging) {
+/*if (charging) {
 	charge = min(charge+chargeSpeed,chargeMax);
 	if (charge == chargeMax) {
 		instance_create_layer(x,y,"other",oBarrelCharged);

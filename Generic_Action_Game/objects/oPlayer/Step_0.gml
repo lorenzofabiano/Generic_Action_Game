@@ -253,37 +253,6 @@ explodeTime = clamp(explodeTime, 0, explodeMaxTime);
 if (explodedBy != noone) instance_create_layer(x,y,"Trail",oTrail);
 #endregion
 
-#region look
-/*
-#region lookup
-if (lookUp) && (!lookDown) && (zoomBack) {
-	if (!instance_exists(oLookUp)) instance_create_layer(x,y,"other",oLookUp);
-	oCamera.follow = oLookUp; 
-}
-else {  
-	if (instance_exists(oLookUp)) && (oCamera.follow == oLookUp) {
-		oCamera.follow = oPlayer;
-		instance_destroy(oLookUp);
-	}
-}
-#endregion
-
-#region lookdown
-if (lookDown) && (!lookUp) {
-	if (!instance_exists(oLookDown)) instance_create_layer(x,y,"other",oLookDown);
-	oCamera.follow = oLookDown; 
-}
-else {  
-	if (instance_exists(oLookDown)) && (oCamera.follow == oLookDown) {
-		oCamera.follow = oPlayer;
-		instance_destroy(oLookDown);
-	}
-}
-
-#endregion
-*/
-#endregion look
-
 #region recover
 var onRecoveryWall = place_meeting(x,y+1,oRecoveryWall);
 
@@ -296,7 +265,7 @@ if (onRecoveryWall) && (recoverBarrel) {
 #endregion
 
 #region ufo
-if (!instance_exists(oUfo)) instance_create_layer(x,y,"Trail",oUfo);
+if (!instance_exists(oUfo)) instance_create_layer(x,y,"ufo",oUfo);
 /*if (!instance_exists(oUfo)) with (instance_create_layer(x,y,"Trail",oUfo)) {
 	image_xscale = 0.1;
 	image_yscale = 0.1;
@@ -305,7 +274,14 @@ if (!instance_exists(oUfo)) instance_create_layer(x,y,"Trail",oUfo);
 #endregion
 
 #region zoom back
-if (zoomBack) oCamera.zoomingBack = true; else oCamera.zoomingBack = false;
+if (zoomBack) {
+	oCamera.zoomingBack = true;
+	oCamera.confine = true;
+}
+else {
+	oCamera.zoomingBack = false;
+	oCamera.confine = false;
+}
 #endregion
 
 #region show hud
@@ -314,5 +290,11 @@ if (showHud) {
 	scShowHud();
 } else {
 	if (oCamera.follow = oUfo) oCamera.follow = oPlayer;
+}
+
+if onRecoveryWall {
+	scShowRecoverHud();
+} else if (instance_exists(oRecoveryHud)) {
+	oRecoveryHud.hudDuration = 0;
 }
 #endregion
