@@ -49,3 +49,5 @@ explodeDownAngle = 1;
 explodedBy = noone;
 #endregion
 
+
+whatRecoveryWall = noone;

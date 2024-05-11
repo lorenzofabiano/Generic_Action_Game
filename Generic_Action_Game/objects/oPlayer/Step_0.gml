@@ -293,6 +293,7 @@ if (showHud) {
 }
 
 if onRecoveryWall {
+	whatRecoveryWall = instance_place(x,y+1,oRecoveryWall);
 	scShowRecoverHud();
 } else if (instance_exists(oRecoveryHud)) {
 	oRecoveryHud.hudDuration = 0;

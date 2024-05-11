@@ -10,8 +10,3 @@ yHudOffset = 16;
 xTextOffset = 7;
 yTextOffset = 10;
 
-
-
-
-
-

@@ -13,9 +13,4 @@ if (hudDuration == 0) {
 	if (scalingHud == 0) instance_destroy();
 }
 
-/*image_xscale = scalingHud;
-image_yscale = scalingHud;
-
-
-
 
