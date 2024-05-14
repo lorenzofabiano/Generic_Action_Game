@@ -11,7 +11,7 @@ buff = 16;
 shake_remain = 0;
 shake_length = 0;
 shake_magnitude = 0;
-camera_follow_speed = 10;
+camera_follow_speed = 10; //lower is faster
 xTo = xstart;
 yTo = ystart;
 zoomingBack = false;
@@ -21,6 +21,7 @@ confine = false;
 
 //view_min_zoom = 1;
 //view_max_zoom = 2;
+zoom_speed = 0.05;
 view_min_zoom = .5 * global.rendererMultiplier;
 view_max_zoom = 1 * global.rendererMultiplier;
 view_zoom = view_max_zoom;

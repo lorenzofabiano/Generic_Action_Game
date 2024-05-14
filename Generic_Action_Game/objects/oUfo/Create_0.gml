@@ -14,6 +14,7 @@ yTo = ystart;
 alarm[0] = 30;
 
 
+canZoom = true;
 zoomSpeed = .5;
 currentZoom = 1;
 maxZoom = 15;

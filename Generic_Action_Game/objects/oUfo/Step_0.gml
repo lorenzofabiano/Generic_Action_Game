@@ -1,21 +1,21 @@
 /// @description Insert description here
 // You can write your code in this editor 
-var zooming = keyboard_check(vk_shift) || gamepad_button_check(0,gp_shoulderlb);
 
 
-if (instance_exists(oPlayer)) {
-	if oPlayer.hasControl {
-		if zooming {
-			currentZoom = min(currentZoom + zoomSpeed, maxZoom);
-			distanceFromFollow = min(distanceFromFollow + sideMovingSpeed,maxDistanceFromFollow);
-		}
-		else {
-			currentZoom = max(currentZoom - zoomSpeed, minZoom);
-			distanceFromFollow = max(distanceFromFollow - sideMovingSpeed,minDistanceFromFollow);
-			
-		}
+
+if (instance_exists(oPlayer) && oPlayer.hasControl) {
+	var zooming = keyboard_check(vk_shift) || gamepad_button_check(0,gp_shoulderlb);
+	if (zooming  && canZoom) {
+		currentZoom = min(currentZoom + zoomSpeed, maxZoom);
+		distanceFromFollow = min(distanceFromFollow + sideMovingSpeed,maxDistanceFromFollow);
+		follow = oNextRoom;
 	}
+	else {
+		currentZoom = max(currentZoom - zoomSpeed, minZoom);
+		distanceFromFollow = max(distanceFromFollow - sideMovingSpeed,minDistanceFromFollow);
+		follow = oPlayer;
 	
+	}
 }
 
 image_xscale=currentZoom;

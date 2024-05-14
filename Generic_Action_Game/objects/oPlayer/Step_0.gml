@@ -274,13 +274,17 @@ if (!instance_exists(oUfo)) instance_create_layer(x,y,"ufo",oUfo);
 #endregion
 
 #region zoom back
-if (zoomBack) {
+if (zoomBack && !showHud) {
 	oCamera.zoomingBack = true;
 	oCamera.confine = true;
+	oCamera.follow = oNextRoom;
+	oUfo.canZoom = true;
 }
 else {
+	if (oCamera.follow = oNextRoom) oCamera.follow = oPlayer;
 	oCamera.zoomingBack = false;
 	oCamera.confine = false;
+	oUfo.canZoom = false;
 }
 #endregion
 
